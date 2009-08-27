@@ -3,3 +3,7 @@ Simple run:
 	$ ruby comics.rb
 	
 and go to url http://localhost:4567
+
+Admin panel: http://localhost:4567/admin
+Login: admin
+Password: password
