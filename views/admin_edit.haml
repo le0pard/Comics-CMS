@@ -1,0 +1,30 @@
+#text
+  %form{ :name => 'add', :method => 'post', :action => "/admin/edit/#{@comics.id}", :enctype => 'multipart/form-data'}
+    %fieldset
+      %legend 
+        %span Список
+        %a{ :href => '/admin/list' } тут 
+        | Добавить 
+        %a{ :href => '/admin/add' } тут 
+      %table
+        %tr
+          %td
+            %label{ :for => 'comics[title]' } Название:
+          %td
+            %input{ :name => 'comics[title]', :type => 'text', :value => @comics.title }
+        %tr
+          %td
+            %label{ :for => 'comics[image]' } Изображение:
+          %td
+            %input{ :name => 'comics[image]', :type => 'file' }
+        %tr
+          %td
+            %label{ :for => 'comics[description]' } Описание (можно использовать html):
+          %td
+            %textarea{ :name => 'comics[description]', :rows => 8, :cols => 60}= @comics.description
+        %tr
+          %td{:colspan => '2'}
+            %center
+              %input{ :type => 'submit', :value => 'Обновить' }
+  %span.backtomain
+    %a{ :href => '/admin' } Вернуться на главную

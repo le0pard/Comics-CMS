@@ -1,0 +1,11 @@
+#text
+  %a{ :href => '/admin/add' } Добавить стрип
+  %br
+  %br
+  - for strip in @comics_list 
+    %a{ :href => "/#{strip.id}" }= h strip.title
+    %a{ :href => "/admin/edit/#{strip.id}" }
+      %img{ :src => "/images/edit.png", :alt => "edit"}
+    %a{ :href => "/admin/delete/#{strip.id}" }
+      %img{ :src => "/images/delete.png", :alt => "delete"}
+    %br

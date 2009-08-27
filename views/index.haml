@@ -1,0 +1,9 @@
+#title
+  %h2= h @comics.title
+#strip
+  %center
+    %img{ :src => @comics.image, :alt => h(@comics.title) }
+%hr
+#desc
+  %center
+    %p= @comics.description

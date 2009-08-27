@@ -1,0 +1,19 @@
+#list
+  - for strip in @comics_list
+    %span 
+      %a{ :href => "/#{strip.id}" }= h strip.title
+  
+  - if @page
+    - if @page > 1
+      - toprev = @page - 1
+    - tonext = @page + 1
+  #pagination
+    - if @page > 1
+      %a{ :href => "/list/#{toprev}"}  &lt;— Сюда
+    - else
+      %a{ :href => "#", :class => "disabled"}  &lt;— Сюда
+    - if @count > @page
+      %a{ :href => "/list/#{tonext}"} Туда  —&gt;
+    - else
+      %a{ :href => "#", :class => "disabled"} Туда  —&gt;
+    

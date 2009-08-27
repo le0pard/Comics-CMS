@@ -1,0 +1,18 @@
+!!! XML
+%rss{ :version => "2.0" }
+  %channel
+    %title= "Комикс"
+    %link= url_for '/'
+    %description= h "Про комикс"
+    %language ru
+    - @comics.each do |strip|
+      - if strip.image.match(/^http\:\/\//) || strip.image.match(/^https\:\/\//)
+        - image_url = strip.image
+      - else
+        - image_url = url_for_rss strip.image
+      %item
+        %title= h strip.title
+        %description= "<![CDATA[<img src='#{image_url}' alt='#{h(strip.title)}' />]]>"
+        %link= url_for "/#{strip.id}"
+        %guid= url_for "/#{strip.id}"
+        %pubDate= strip.created_at.rfc822

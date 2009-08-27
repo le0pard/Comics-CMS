@@ -1,0 +1,37 @@
+!!!
+%html{ :xmlns => 'http://www.w3.org/1999/xhtml', 'xml:lang' => 'ru', :lang => 'ru' }    
+  %head
+    %title= "#{@comics.title} - Комикс" if (@comics && @comics.title)
+    %meta{ :content => 'text/html; charset=utf-8', 'http-equiv' => 'Content-Type' }
+    %link{ :rel => "shortcut icon", :href => "/favicon.ico", :type => "image/x-icon"}
+    %script{ :type => "text/javascript", :src => "/script.js"}
+    %link{ :rel => 'stylesheet', :href => '/sass_style.css', :type => 'text/css'}
+  %body
+    #header
+      %h1= "xkcd комиксы"
+      %span= "веб-комикс о романтике, сарказме, математике и языке"
+    #navigation
+      %center
+        %div{:class => "digg_pagination"}
+          - if @comics
+            - tonext = "/#{@comics.get_next.get_id}" rescue nil
+            - toprevious = "/#{@comics.get_previous.get_id}" rescue nil
+          - if toprevious
+            %a{ :href => toprevious } &lt;—
+          - else
+            %a{ :href => "#", :class => "disabled" } &lt;—
+          %a{ :href => '/' } Последний
+          %a{ :href => '/list' } По выпускам
+          %a{ :href => '/about' } О комиксе
+          - if tonext
+            %a{ :href => tonext } —&gt;
+          - else
+            %a{ :href => "#", :class => "disabled" } —&gt;  
+    #content    
+      = yield
+    #footer
+      #info 
+        %span Мой твиттер: 
+        %a{ :href => "http://twitter.com/leopard_me" }= "leopard_me"
+        %span= "|"
+        %a{ :href => '/rss.xml' } RSS

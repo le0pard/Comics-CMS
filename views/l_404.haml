@@ -1,0 +1,22 @@
+%html{ :xmlns => 'http://www.w3.org/1999/xhtml', 'xml:lang' => 'ru', :lang => 'ru' }    
+  %head
+    %title= "404"
+    %meta{ :content => 'text/html; charset=utf-8', 'http-equiv' => 'Content-Type' }
+    %link{ :rel => "shortcut icon", :href => "/favicon.ico", :type => "image/x-icon"}
+    %script{ :type => "text/javascript", :src => "/script.js"}
+    %link{ :rel => 'stylesheet', :href => '/sass_style.css', :type => 'text/css'}
+  %body
+    #header
+      %h1= "xkcd комиксы"
+      %span= "веб-комикс о романтике, сарказме, математике и языке"	
+    #content  
+      #error_404
+        %center
+          %div= "По вашему запросу ничего не найдено"
+          %a{ :href => "/"} На главную
+    #footer
+      #info 
+        %span Мой твиттер: 
+        %a{ :href => "http://twitter.com/leopard_me" }= "leopard_me"
+        %span= "|"
+        %a{ :href => '/rss.xml' } RSS
