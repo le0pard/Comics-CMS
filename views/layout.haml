@@ -4,6 +4,7 @@
     %title= "#{@comics.title} - Комикс" if (@comics && @comics.title)
     %meta{ :content => 'text/html; charset=utf-8', 'http-equiv' => 'Content-Type' }
     %link{ :rel => "shortcut icon", :href => "/favicon.ico", :type => "image/x-icon"}
+    %script{ :type => "text/javascript", :src => "/prototype.js"}
     %script{ :type => "text/javascript", :src => "/script.js"}
     %link{ :rel => 'stylesheet', :href => '/sass_style.css', :type => 'text/css'}
   %body
@@ -17,16 +18,16 @@
             - tonext = "/#{@comics.get_next.get_id}" rescue nil
             - toprevious = "/#{@comics.get_previous.get_id}" rescue nil
           - if toprevious
-            %a{ :href => toprevious } &lt;—
+            %a{ :href => toprevious, :id => "previous_comics" } &lt;— + Ctrl 
           - else
-            %a{ :href => "#", :class => "disabled" } &lt;—
+            %a{ :href => "#", :class => "disabled" } &lt;— + Ctrl 
           %a{ :href => '/' } Последний
           %a{ :href => '/list' } По выпускам
           %a{ :href => '/about' } О комиксе
           - if tonext
-            %a{ :href => tonext } —&gt;
+            %a{ :href => tonext, :id => "next_comics" } Ctrl + —&gt;
           - else
-            %a{ :href => "#", :class => "disabled" } —&gt;  
+            %a{ :href => "#", :class => "disabled" } Ctrl + —&gt;  
     #content    
       = yield
     #footer

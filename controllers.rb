@@ -114,7 +114,7 @@ end
 
 get '/rss.xml' do
   content_type 'application/rss+xml', :charset => 'utf-8'
-  @comics = Comics.all :limit => 10
+  @comics = Comics.all :limit => 30
   haml(:rss, :layout => false)
 end
 
