@@ -1,0 +1,5 @@
+Comics CMS writen on Ruby (use Sinatra, DataMapper, HAML and SASS).
+Simple run:
+	$ ruby comics.rb
+	
+and go to url http://localhost:4567
