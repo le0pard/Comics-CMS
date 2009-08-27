@@ -18,16 +18,16 @@
             - tonext = "/#{@comics.get_next.get_id}" rescue nil
             - toprevious = "/#{@comics.get_previous.get_id}" rescue nil
           - if toprevious
-            %a{ :href => toprevious, :id => "previous_comics" } &lt;— + Ctrl 
+            %a{ :href => toprevious, :id => "previous_comics" } &lt;— + Alt 
           - else
-            %a{ :href => "#", :class => "disabled" } &lt;— + Ctrl 
+            %a{ :href => "#", :class => "disabled" } &lt;— + Alt 
           %a{ :href => '/' } Последний
           %a{ :href => '/list' } По выпускам
           %a{ :href => '/about' } О комиксе
           - if tonext
-            %a{ :href => tonext, :id => "next_comics" } Ctrl + —&gt;
+            %a{ :href => tonext, :id => "next_comics" } Alt + —&gt;
           - else
-            %a{ :href => "#", :class => "disabled" } Ctrl + —&gt;  
+            %a{ :href => "#", :class => "disabled" } Alt + —&gt;  
     #content    
       = yield
     #footer
