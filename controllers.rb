@@ -1,6 +1,6 @@
 ### CONTROLLER ACTIONS
 layout 'layout.haml'
-
+#uploads only images
 FILE_TYPES = ["image/jpeg", "image/pjpeg", "image/gif", "image/png", "image/x-png"]
 
 ['/admin/?', '/admin/dashboard'].each do |path|

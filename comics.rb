@@ -7,6 +7,7 @@ set :views, File.dirname(__FILE__) + "/views"
 set :environment, :production
 set :sessions, true
 
+#helpers
 helpers do
   
   include Rack::Utils
