@@ -7,7 +7,7 @@ var ComicsObj = {
 		document.observe('keydown', function(event){
 			var evt = event || window.event;
 			var key = evt.keyCode || evt.which;
-			
+			//not work in Opera
 			if (evt.altKey) {
 				if ('function' == typeof evt.preventDefault){
 					evt.preventDefault();
