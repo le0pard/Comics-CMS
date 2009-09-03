@@ -8,7 +8,7 @@ var ComicsObj = {
 			var evt = event || window.event;
 			var key = evt.keyCode || evt.which;
 			//not work in Opera
-			if (evt.altKey) {
+			if (evt.ctrlKey) {
 				if ('function' == typeof evt.preventDefault){
 					evt.preventDefault();
 				} else {
