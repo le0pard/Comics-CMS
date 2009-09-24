@@ -21,7 +21,7 @@ helpers do
   end
 
   def authorized?
-    admin = {:login => 'admin ', :password => 'password'}
+    admin = {:login => 'admin', :password => 'password'}
     @auth ||=  Rack::Auth::Basic::Request.new(request.env)
     @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == [admin[:login], admin[:password]]
   end

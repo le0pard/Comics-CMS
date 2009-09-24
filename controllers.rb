@@ -27,7 +27,8 @@ post '/admin/add' do
         @comics = Comics.new(
                         :title => params[:comics][:title],
                         :description => params[:comics][:description],
-                        :image => "/files/" + s)
+                        :image => "/files/" + s,
+                        :created_at => Time.now)
         File.copy(tempfile.path, File.expand_path("public/files/#{s}", File.dirname(__FILE__)))
         File.chmod(0755, File.expand_path("public/files/#{s}", File.dirname(__FILE__)))
         @comics.save!
