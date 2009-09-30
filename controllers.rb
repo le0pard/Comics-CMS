@@ -119,8 +119,14 @@ get '/rss.xml' do
   haml(:rss, :layout => false)
 end
 
+get '/atom.xml' do
+  content_type 'application/atom+xml', :charset => 'utf-8'
+  @comics = Comics.all :limit => 30
+  haml(:atom, :layout => false)
+end
+
 get '/sass_style.css' do
-  header 'Content-Type' => 'text/css; charset=utf-8'
+  content_type 'text/css', :charset => 'utf-8'
   sass :style, :layout => false
 end
 
@@ -142,7 +148,7 @@ end
 
 
 error do
-  'Sorry there was a nasty error - ' + env['sinatra.error'].name
+  'Sorry there was a nasty error - ' + env['sinatra.error']
 end
 
 
