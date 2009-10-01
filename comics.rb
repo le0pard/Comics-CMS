@@ -51,7 +51,8 @@ helpers do
     else
       port = ":#{request.port}"
     end
-    base = "#{scheme}://#{request.host}#{port}"
+    #base = "#{scheme}://#{request.host}#{port}"
+    base = "#{scheme}://#{request.host}"
     "#{base}#{url_fragment}"
   end
 
