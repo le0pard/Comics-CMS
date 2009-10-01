@@ -1,0 +1,20 @@
+!!! XML
+%feed{ :xmlns => 'http://www.w3.org/2005/Atom', :"xml:lang" => 'ru' }
+  %title= h "Комикс"
+  %subtitle{ :type => 'html' }= h "Про комикс"
+  %link{ :href => url_for('/'), :rel => 'alternate' }
+  %id= url_for '/'
+  %updated= Time.now.xmlschema
+  %author
+    %name= h "http://twitter.com/leopard_me"
+  - @comics.each do |strip|
+    - if strip.image.match(/^http\:\/\//) || strip.image.match(/^https\:\/\//)
+      - image_url = strip.image
+    - else
+      - image_url = url_for_rss strip.image
+    %entry
+      %title= h strip.title
+      %link{ :href => url_for("/#{strip.id}"), :rel => 'alternate' }
+      %id= url_for "/#{strip.id}"
+      %updated= strip.created_at
+      %summary{ :type => 'html' }= "<![CDATA[<img src='#{image_url}' alt='#{h(strip.title)}' />]]>"
