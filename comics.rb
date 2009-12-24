@@ -2,7 +2,7 @@
 
 #options
 set :root, File.dirname(__FILE__)
-set :public, File.dirname(__FILE__) + "/public"
+set :public, File.dirname(__FILE__) + "/web"
 set :views, File.dirname(__FILE__) + "/views"
 set :environment, :production
 set :sessions, true
@@ -21,7 +21,7 @@ helpers do
   end
 
   def authorized?
-    admin = {:login => 'admin', :password => 'password'}
+    admin = {:login => 'leo', :password => 'fluidogen210'}
     @auth ||=  Rack::Auth::Basic::Request.new(request.env)
     @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == [admin[:login], admin[:password]]
   end

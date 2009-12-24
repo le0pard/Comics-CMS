@@ -1,6 +1,7 @@
 ### CONTROLLER ACTIONS
 layout 'layout.haml'
 #uploads only images
+public_dir = 'web'
 FILE_TYPES = ["image/jpeg", "image/pjpeg", "image/gif", "image/png", "image/x-png"]
 
 ['/admin/?', '/admin/dashboard'].each do |path|
@@ -29,8 +30,8 @@ post '/admin/add' do
                         :description => params[:comics][:description],
                         :image => "/files/" + s,
                         :created_at => Time.now)
-        File.copy(tempfile.path, File.expand_path("public/files/#{s}", File.dirname(__FILE__)))
-        File.chmod(0755, File.expand_path("public/files/#{s}", File.dirname(__FILE__)))
+        File.copy(tempfile.path, File.expand_path(public_dir + "/files/#{s}", File.dirname(__FILE__)))
+        File.chmod(0755, File.expand_path(public_dir + "/files/#{s}", File.dirname(__FILE__)))
         @comics.save!
       end
     end
@@ -60,7 +61,7 @@ post '/admin/edit/:id' do
       10.times { s << (i = Kernel.rand(62); i += ((i < 10) ? 48 : ((i < 36) ? 55 : 61 ))).chr }
       s += "." + params[:comics][:image][:filename].gsub(/.*\./, '')
       @comics.image = "/files/" + s
-      File.copy(tempfile.path, File.expand_path("public/files/#{s}", File.dirname(__FILE__)))
+      File.copy(tempfile.path, File.expand_path(public_dir + "/files/#{s}", File.dirname(__FILE__)))
     end
   end
   @comics.save!
@@ -70,7 +71,7 @@ end
 get '/admin/delete/:id' do
   protected!
   @comics = Comics.get(params[:id])
-  File.delete(File.expand_path("public#{@comics.image}", File.dirname(__FILE__)))
+  File.delete(File.expand_path(public_dir + "#{@comics.image}", File.dirname(__FILE__)))
   @comics.destroy
   redirect '/admin/list'
 end

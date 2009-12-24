@@ -42,7 +42,12 @@ end
 
 def install
   DataMapper.auto_migrate!
+  Comics.new(:title => 'Экстраполяция', :description => 'К седьмому месяцу в тебе будут сотни детей.',
+              :image => 'http://www.xkcd.ru/xkcd_img/xkcd605_.png', :created_at => Time.now).save!
   sleep 1
   Comics.new(:title => 'Дятел', :description => 'Если у тебя не будет удлинителя, я его тоже смогу принести. Ведь мы же друзья! Правда?',
               :image => 'http://www.xkcd.ru/xkcd_img/xkcd614___.png', :created_at => Time.now).save!
+  sleep 1
+  Comics.new(:title => 'Идиократия', :description => 'Люди не изменятся, хорошо это или плохо. Технология станет круче. В общем, будущее в порядке! За исключением климата; его мы всё-таки просрали.',
+              :image => 'http://www.xkcd.ru/xkcd_img/xkcd_603_idiocracy_ru-4.png', :created_at => Time.now).save!
 end
