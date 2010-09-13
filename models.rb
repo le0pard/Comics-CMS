@@ -17,7 +17,8 @@ end
 #commics
 class Comics
   include DataMapper::Resource
- 
+
+  storage_names[:default] = "comicses"
   # The Serial type provides auto-incrementing primary keys
   property :id,           Serial
   property :title,        String, :length => 0..255
